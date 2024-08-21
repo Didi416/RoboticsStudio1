@@ -1,0 +1,10 @@
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/uninstall.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/rs1_project_uninstall.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/turtlebot3_laser_scan.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/test.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/edit_cache.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/rebuild_cache.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/list_install_components.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/install.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/install/local.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/install/strip.dir
