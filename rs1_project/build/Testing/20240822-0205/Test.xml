@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Site BuildName="(empty)"
-	BuildStamp="20240821-0841-Experimental"
+	BuildStamp="20240822-0205-Experimental"
 	Name="labMGJSX0"
 	Generator="ctest-3.22.1"
 	CompilerName="/usr/bin/c++"
@@ -15,20 +15,20 @@
 	VendorID="Intel Corporation"
 	FamilyID="6"
 	ModelID="85"
-	ProcessorCacheSize="33792"
+	ProcessorCacheSize="36608"
 	NumberOfLogicalCPU="8"
 	NumberOfPhysicalCPU="4"
 	TotalVirtualMemory="0"
 	TotalPhysicalMemory="15979"
 	LogicalProcessorsPerPhysical="2"
-	ProcessorClockFrequency="2693.67"
+	ProcessorClockFrequency="2593.91"
 	>
 	<Testing>
-		<StartDateTime>Aug 21 13:09 UTC</StartDateTime>
-		<StartTestTime>1724245792</StartTestTime>
+		<StartDateTime>Aug 22 02:05 UTC</StartDateTime>
+		<StartTestTime>1724292347</StartTestTime>
 		<TestList/>
-		<EndDateTime>Aug 21 13:09 UTC</EndDateTime>
-		<EndTestTime>1724245792</EndTestTime>
+		<EndDateTime>Aug 22 02:05 UTC</EndDateTime>
+		<EndTestTime>1724292347</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

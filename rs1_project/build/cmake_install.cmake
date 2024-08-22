@@ -43,9 +43,30 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rs1_project/turtlebot3_laser_scan" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rs1_project/turtlebot3_laser_scan")
+    file(RPATH_CHECK
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rs1_project/turtlebot3_laser_scan"
+         RPATH "")
+  endif()
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rs1_project" TYPE EXECUTABLE FILES "/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/turtlebot3_laser_scan")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rs1_project/turtlebot3_laser_scan" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rs1_project/turtlebot3_laser_scan")
+    file(RPATH_CHANGE
+         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rs1_project/turtlebot3_laser_scan"
+         OLD_RPATH "/opt/ros/humble/lib:"
+         NEW_RPATH "")
+    if(CMAKE_INSTALL_DO_STRIP)
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rs1_project/turtlebot3_laser_scan")
+    endif()
+  endif()
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rs1_project" TYPE DIRECTORY FILES
     "/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/launch"
     "/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/worlds"
+    "/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/rviz"
     )
 endif()
 

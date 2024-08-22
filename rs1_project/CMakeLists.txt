@@ -29,7 +29,12 @@ endif()
 add_executable(turtlebot3_laser_scan src/turtlebot3.cpp)
 ament_target_dependencies(turtlebot3_laser_scan rclcpp sensor_msgs)
 
-install(DIRECTORY launch worlds
+install(TARGETS
+  turtlebot3_laser_scan  
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(DIRECTORY launch worlds rviz
   DESTINATION share/rs1_project
 )
 
