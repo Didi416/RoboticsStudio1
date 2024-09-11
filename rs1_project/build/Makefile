@@ -210,6 +210,43 @@ turtlebot3_laser_scan/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtlebot3_laser_scan.dir/build.make CMakeFiles/turtlebot3_laser_scan.dir/build
 .PHONY : turtlebot3_laser_scan/fast
 
+#=============================================================================
+# Target rules for targets named scanLocaliser
+
+# Build rule for target.
+scanLocaliser: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 scanLocaliser
+.PHONY : scanLocaliser
+
+# fast build rule for target.
+scanLocaliser/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/build
+.PHONY : scanLocaliser/fast
+
+src/scanComparisonMatch.o: src/scanComparisonMatch.cpp.o
+.PHONY : src/scanComparisonMatch.o
+
+# target to build an object file
+src/scanComparisonMatch.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/src/scanComparisonMatch.cpp.o
+.PHONY : src/scanComparisonMatch.cpp.o
+
+src/scanComparisonMatch.i: src/scanComparisonMatch.cpp.i
+.PHONY : src/scanComparisonMatch.i
+
+# target to preprocess a source file
+src/scanComparisonMatch.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/src/scanComparisonMatch.cpp.i
+.PHONY : src/scanComparisonMatch.cpp.i
+
+src/scanComparisonMatch.s: src/scanComparisonMatch.cpp.s
+.PHONY : src/scanComparisonMatch.s
+
+# target to generate assembly for a file
+src/scanComparisonMatch.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/src/scanComparisonMatch.cpp.s
+.PHONY : src/scanComparisonMatch.cpp.s
+
 src/turtlebot3.o: src/turtlebot3.cpp.o
 .PHONY : src/turtlebot3.o
 
@@ -249,7 +286,11 @@ help:
 	@echo "... test"
 	@echo "... rs1_project_uninstall"
 	@echo "... uninstall"
+	@echo "... scanLocaliser"
 	@echo "... turtlebot3_laser_scan"
+	@echo "... src/scanComparisonMatch.o"
+	@echo "... src/scanComparisonMatch.i"
+	@echo "... src/scanComparisonMatch.s"
 	@echo "... src/turtlebot3.o"
 	@echo "... src/turtlebot3.i"
 	@echo "... src/turtlebot3.s"

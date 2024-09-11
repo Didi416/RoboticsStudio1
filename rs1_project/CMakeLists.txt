@@ -13,6 +13,9 @@ find_package(ament_cmake REQUIRED)
 # find dependencies
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(OpenCV REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -28,9 +31,12 @@ endif()
 
 add_executable(turtlebot3_laser_scan src/turtlebot3.cpp)
 ament_target_dependencies(turtlebot3_laser_scan rclcpp sensor_msgs)
+add_executable(scanLocaliser src/scanComparisonMatch.cpp)
+ament_target_dependencies(scanLocaliser rclcpp sensor_msgs nav_msgs geometry_msgs OpenCV)
 
 install(TARGETS
-  turtlebot3_laser_scan  
+  turtlebot3_laser_scan
+  scanLocaliser
   DESTINATION lib/${PROJECT_NAME}
 )
 

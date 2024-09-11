@@ -17,3 +17,24 @@ ros2 run rqt_image_view rqt_image_view
 
 ros2 run turtlebot3_teleop teleop_keyboard
 
+______________________________________________
+Sprint 2 Commands
+
+Launch and Setup for mapping and slam_toolbox localisation:
+
+ros2 launch rs1_project office_world.launch.py
+ros2 launch nav2_bringup navigation_launch.py use_sim_time:=True
+ros2 launch slam_toolbox online_async_launch.py use_sim_time:=True
+ros2 launch rs1_project mapping_rviz.launch.py
+ros2 run turtlebot3_teleop teleop_keyboard
+
+Display Odometry, IMU and Laser Readings
+
+ros2 run rqt_plot rqt_plot
+ros2 launch rs1_project rviz.launch.py
+
+Localisation:
+
+ros2 launch turtlebot3_navigation2 navigation2.launch.py map:=$HOME/ros2_ws/src/RoboticsStudio1/rs1_project/maps/my_map.yaml 
+
+
