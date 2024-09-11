@@ -9,11 +9,11 @@
 class Localiser : public rclcpp::Node {
 public:
     Localiser() : Node("scan_to_image_node"){
-        scan_subscriber_ = this->create_subscription<sensor_msgs::msg::LaserScan>("scan", 10, std::bind(&Localiser::scanCallback, this, std::placeholders::_1));
-        // cmd_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
-        map_subscriber_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("map", 10, std::bind(&Localiser::mapCallback, this, std::placeholders::_1));
+        scan_subscriber_ = this->create_subscription<sensor_msgs::msg::LaserScan>("/scan", 10, std::bind(&Localiser::scanCallback, this, std::placeholders::_1));
+        cmd_publisher_ = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);
+        map_subscriber_ = this->create_subscription<nav_msgs::msg::OccupancyGrid>("/map", 10, std::bind(&Localiser::mapCallback, this, std::placeholders::_1));
         RCLCPP_INFO(this->get_logger(), "Localiser Node started.");
-        // cv::namedWindow(WINDOW1, cv::WINDOW_AUTOSIZE);
+        cv::namedWindow(WINDOW1, cv::WINDOW_AUTOSIZE);
     }
 
 private:
@@ -25,7 +25,7 @@ private:
         cv::rotate(mapImage_, mapImage_, cv::ROTATE_90_COUNTERCLOCKWISE);
 
         cv::imshow("Map Image", mapImage_);
-        cv::waitKey(1);
+        cv::waitKey(30);
         map_image_captured_ = true;
     }
 
@@ -37,85 +37,87 @@ private:
         // cv::waitKey(1);
         
         if (map_image_captured_) {
-            cv::Point2f initialPose(0,0);
-            localiseTurtleBot(mapImage_, scanImage_, initialPose, map_scale_);  
+            localiseTurtleBot(mapImage_, scanImage_);  
         }
     }
 
-    int localiseTurtleBot(const cv::Mat& mapSection, const cv::Mat& laserScan, const cv::Point2f& initialPose, float mapResolution) {
+    int localiseTurtleBot(const cv::Mat& mapSection, const cv::Mat& laserScan) {
                
         // Detect and match features between the map and laser scan
         std::vector<cv::Point2f> mapPoints, scanPoints;
         detectAndMatchFeatures(mapSection, laserScan, mapPoints, scanPoints);
-        std::cout<<mapPoints.size()<<" and "<<scanPoints.size()<<std::endl;
+        // std::cout<<mapPoints.size()<<" and "<<scanPoints.size()<<std::endl;
 
         if (mapPoints.empty() || scanPoints.empty()) {
             // If no good matches were found, return the initial pose
             std::cerr << "No good feature matches found!" << std::endl;
             return 0;
         }
-        // Estimate transformation between scan points and map points using findHomography
-        cv::Mat homography = cv::findHomography(scanPoints, mapPoints, cv::RANSAC);
 
-        if (homography.empty()) {
-            // If the homography cannot be computed, return the initial pose
-            std::cerr << "Homography computation failed!" << std::endl;
-            return 0;
+        try {
+            cv::Mat transform_matrix = cv::estimateAffinePartial2D(mapPoints, scanPoints);
+            if (transform_matrix.empty()) {
+                RCLCPP_ERROR(this->get_logger(), "Transformation matrix estimation failed.");
+            } else {
+                // Extract the rotation angle from the transformation matrix
+                angle_difference_ = atan2(transform_matrix.at<double>(1, 0), transform_matrix.at<double>(0, 0));
+                angle_difference_ = angle_difference_ * 180.0 / CV_PI;
+                
+                RCLCPP_INFO(this->get_logger(), "Estimated yaw angle change: %f degrees", angle_difference_);
+            }
+        } catch (const cv::Exception& e) {
+            RCLCPP_ERROR(this->get_logger(), "Error in estimateAffinePartial2D: %s", e.what());
         }
 
-        // Apply the transformation (homography) to estimate the robot's new pose
-        std::vector<cv::Point2f> untransformedPoints(1, initialPose); // Use robot origin as reference
-        std::vector<cv::Point2f> transformedPoints;
-        cv::perspectiveTransform(untransformedPoints, transformedPoints, homography);
+        if (std::abs(angle_difference_) < 1.0){
+            std::cout << "Localised successfully!" << std::endl;
+        }
+        else{rotateRobot();}
 
+        // Estimate transformation between scan points and map points using findHomography
+        // cv::Mat homography = cv::findHomography(scanPoints, mapPoints, cv::RANSAC);
+        // if (homography.empty()) {
+        //     // If the homography cannot be computed, return the initial pose
+        //     std::cerr << "Homography computation failed!" << std::endl;
+        //     return 0;
+        // }
+        // Apply the transformation (homography) to estimate the robot's new pose
+        // std::vector<cv::Point2f> untransformedPoints(1, initialPose); // Use robot origin as reference
+        // std::vector<cv::Point2f> transformedPoints;
+        // cv::perspectiveTransform(untransformedPoints, transformedPoints, homography);
         // Convert the transformed point to pixel coordinates
         // cv::Point2f targetPose = transformedPoints[0] * mapResolution;
-        if (untransformedPoints == transformedPoints){
-            std::cout << "Localised successfully!" << std::endl;
-            rotateRobot();
-        }
-
+        // if (untransformedPoints == transformedPoints){
+        //     std::cout << "Localised successfully!" << std::endl;
+        //     rotateRobot();
+        // }
         // geometry_msgs::msg::Twist movementCmd = calculateMovement(initialPose, targetPose);
-
         // // Publish the movement commands to the TurtleBot
         // cmd_publisher_->publish(movementCmd);
-
         // // Add a small delay to let the robot execute the movement
         // rclcpp::sleep_for(std::chrono::seconds(2));
         return 0;
     }
 
     void rotateRobot() {
+        const double angular_speed = 0.2;
+        double angle_radians = angle_difference_ * M_PI/180;
+
+        if (std::abs(angle_difference_) < 1.0){
+            std::cout << "Angle too small to rotate." << std::endl;
+            return;
+        }
+
+        double time = std::abs(angle_radians)/angular_speed;
+        int time_ms = time*1000;
         auto twist_msg = geometry_msgs::msg::Twist();
-        twist_msg.angular.z = 1.0;  // Rotate with some angular velocity
+        twist_msg.angular.z = angular_speed*(angle_difference_ > 0 ? 1.0 : -1.0);  // Rotate with some angular velocity
         cmd_publisher_->publish(twist_msg);
-
         // Sleep for a while to allow the robot to rotate
-        rclcpp::sleep_for(std::chrono::seconds(2));
-
+        rclcpp::sleep_for(std::chrono::milliseconds(time_ms));
         // Stop rotation
         twist_msg.angular.z = 0.0;
         cmd_publisher_->publish(twist_msg);
-    }
-
-    geometry_msgs::msg::Twist calculateMovement(const cv::Point2f& currentPose, const cv::Point2f& targetPose) {
-
-        geometry_msgs::msg::Twist cmdVel;
-
-        // Compute the error between current and target pose
-        float errorX = targetPose.x - currentPose.x;
-        float errorY = targetPose.y - currentPose.y;
-
-        // Convert the error into a magnitude and angle
-        float distance = sqrt(errorX * errorX + errorY * errorY);
-        float angleToTarget = atan2(errorY, errorX);
-
-        // Adjust the velocity based on the distance and angle
-        // Simple proportional control for movement and rotation
-        cmdVel.linear.x = std::min(0.2f, 0.1f * distance); // Cap forward speed at 0.2 m/s
-        cmdVel.angular.z = 0.2f * angleToTarget; // Proportional rotation control
-
-        return cmdVel;
     }
 
     cv::Mat laserScanToMat(const sensor_msgs::msg::LaserScan::SharedPtr& scan) { //convert laser scan to cv image format
@@ -208,7 +210,7 @@ private:
 
         // Display the image to verify
         cv::imshow("Occupancy Grid", m_MapColImage);
-        cv::waitKey(1);
+        cv::waitKey(30);
     }
 
     rclcpp::Subscription<sensor_msgs::msg::LaserScan>::SharedPtr scan_subscriber_;
@@ -218,6 +220,8 @@ private:
     cv::Mat mapImage_, scanImage_;
     bool map_image_captured_ = false;
     bool second_image_captured_ = false;
+
+    double angle_difference_;
 
     nav_msgs::msg::OccupancyGrid grid_;
 
