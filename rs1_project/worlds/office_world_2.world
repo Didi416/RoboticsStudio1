@@ -6036,7 +6036,7 @@
               </script>
             </material>
           </visual>
-          <collision name='front_left_leg'>
+          <collision name='front_left_leg_collision'>
             <pose>0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -6058,7 +6058,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='front_left_leg'>
+          <visual name='front_left_leg_visual'>
             <pose>0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -6073,7 +6073,7 @@
               </script>
             </material>
           </visual>
-          <collision name='front_right_leg'>
+          <collision name='front_right_leg_collision'>
             <pose>0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -6095,7 +6095,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='front_right_leg'>
+          <visual name='front_right_leg_visual'>
             <pose>0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -6110,7 +6110,7 @@
               </script>
             </material>
           </visual>
-          <collision name='back_right_leg'>
+          <collision name='back_right_leg_collision'>
             <pose>-0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -6132,7 +6132,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='back_right_leg'>
+          <visual name='back_right_leg_visual'>
             <pose>-0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -6147,7 +6147,7 @@
               </script>
             </material>
           </visual>
-          <collision name='back_left_leg'>
+          <collision name='back_left_leg_collision'>
             <pose>-0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -6169,7 +6169,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='back_left_leg'>
+          <visual name='back_left_leg_visual'>
             <pose>-0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11718,7 +11718,7 @@
               </script>
             </material>
           </visual>
-          <collision name='front_left_leg'>
+          <collision name='front_left_leg_collision2'>
             <pose>0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11740,7 +11740,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='front_left_leg'>
+          <visual name='front_left_leg_visual2'>
             <pose>0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11755,7 +11755,7 @@
               </script>
             </material>
           </visual>
-          <collision name='front_right_leg'>
+          <collision name='front_right_leg_collision2'>
             <pose>0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11777,7 +11777,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='front_right_leg'>
+          <visual name='front_right_leg_visual2'>
             <pose>0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11792,7 +11792,7 @@
               </script>
             </material>
           </visual>
-          <collision name='back_right_leg'>
+          <collision name='back_right_leg_collision2'>
             <pose>-0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11814,7 +11814,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='back_right_leg'>
+          <visual name='back_right_leg_visual2'>
             <pose>-0.68 -0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11829,7 +11829,7 @@
               </script>
             </material>
           </visual>
-          <collision name='back_left_leg'>
+          <collision name='back_left_leg_collision2'>
             <pose>-0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
@@ -11851,7 +11851,7 @@
               </friction>
             </surface>
           </collision>
-          <visual name='back_left_leg'>
+          <visual name='back_left_leg_visual2'>
             <pose>-0.68 0.38 0.5 0 -0 0</pose>
             <geometry>
               <cylinder>
