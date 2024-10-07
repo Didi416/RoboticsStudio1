@@ -223,6 +223,43 @@ scanLocaliser/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/build
 .PHONY : scanLocaliser/fast
 
+#=============================================================================
+# Target rules for targets named mapOverlay
+
+# Build rule for target.
+mapOverlay: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mapOverlay
+.PHONY : mapOverlay
+
+# fast build rule for target.
+mapOverlay/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mapOverlay.dir/build.make CMakeFiles/mapOverlay.dir/build
+.PHONY : mapOverlay/fast
+
+src/mapOverlay.o: src/mapOverlay.cpp.o
+.PHONY : src/mapOverlay.o
+
+# target to build an object file
+src/mapOverlay.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mapOverlay.dir/build.make CMakeFiles/mapOverlay.dir/src/mapOverlay.cpp.o
+.PHONY : src/mapOverlay.cpp.o
+
+src/mapOverlay.i: src/mapOverlay.cpp.i
+.PHONY : src/mapOverlay.i
+
+# target to preprocess a source file
+src/mapOverlay.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mapOverlay.dir/build.make CMakeFiles/mapOverlay.dir/src/mapOverlay.cpp.i
+.PHONY : src/mapOverlay.cpp.i
+
+src/mapOverlay.s: src/mapOverlay.cpp.s
+.PHONY : src/mapOverlay.s
+
+# target to generate assembly for a file
+src/mapOverlay.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mapOverlay.dir/build.make CMakeFiles/mapOverlay.dir/src/mapOverlay.cpp.s
+.PHONY : src/mapOverlay.cpp.s
+
 src/scanComparisonMatch.o: src/scanComparisonMatch.cpp.o
 .PHONY : src/scanComparisonMatch.o
 
@@ -286,8 +323,12 @@ help:
 	@echo "... test"
 	@echo "... rs1_project_uninstall"
 	@echo "... uninstall"
+	@echo "... mapOverlay"
 	@echo "... scanLocaliser"
 	@echo "... turtlebot3_laser_scan"
+	@echo "... src/mapOverlay.o"
+	@echo "... src/mapOverlay.i"
+	@echo "... src/mapOverlay.s"
 	@echo "... src/scanComparisonMatch.o"
 	@echo "... src/scanComparisonMatch.i"
 	@echo "... src/scanComparisonMatch.s"

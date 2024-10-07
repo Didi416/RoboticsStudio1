@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build
 # The main recursive "all" target.
 all: CMakeFiles/turtlebot3_laser_scan.dir/all
 all: CMakeFiles/scanLocaliser.dir/all
+all: CMakeFiles/mapOverlay.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -76,6 +77,7 @@ clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/rs1_project_uninstall.dir/clean
 clean: CMakeFiles/turtlebot3_laser_scan.dir/clean
 clean: CMakeFiles/scanLocaliser.dir/clean
+clean: CMakeFiles/mapOverlay.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -137,7 +139,7 @@ CMakeFiles/rs1_project_uninstall.dir/clean:
 CMakeFiles/turtlebot3_laser_scan.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtlebot3_laser_scan.dir/build.make CMakeFiles/turtlebot3_laser_scan.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/turtlebot3_laser_scan.dir/build.make CMakeFiles/turtlebot3_laser_scan.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles --progress-num=3,4 "Built target turtlebot3_laser_scan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles --progress-num=5,6 "Built target turtlebot3_laser_scan"
 .PHONY : CMakeFiles/turtlebot3_laser_scan.dir/all
 
 # Build rule for subdir invocation for target.
@@ -163,7 +165,7 @@ CMakeFiles/turtlebot3_laser_scan.dir/clean:
 CMakeFiles/scanLocaliser.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles --progress-num=1,2 "Built target scanLocaliser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles --progress-num=3,4 "Built target scanLocaliser"
 .PHONY : CMakeFiles/scanLocaliser.dir/all
 
 # Build rule for subdir invocation for target.
@@ -181,6 +183,32 @@ scanLocaliser: CMakeFiles/scanLocaliser.dir/rule
 CMakeFiles/scanLocaliser.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/scanLocaliser.dir/build.make CMakeFiles/scanLocaliser.dir/clean
 .PHONY : CMakeFiles/scanLocaliser.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/mapOverlay.dir
+
+# All Build rule for target.
+CMakeFiles/mapOverlay.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mapOverlay.dir/build.make CMakeFiles/mapOverlay.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mapOverlay.dir/build.make CMakeFiles/mapOverlay.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles --progress-num=1,2 "Built target mapOverlay"
+.PHONY : CMakeFiles/mapOverlay.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/mapOverlay.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/mapOverlay.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles 0
+.PHONY : CMakeFiles/mapOverlay.dir/rule
+
+# Convenience name for target.
+mapOverlay: CMakeFiles/mapOverlay.dir/rule
+.PHONY : mapOverlay
+
+# clean rule for target.
+CMakeFiles/mapOverlay.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mapOverlay.dir/build.make CMakeFiles/mapOverlay.dir/clean
+.PHONY : CMakeFiles/mapOverlay.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

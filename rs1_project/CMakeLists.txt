@@ -33,14 +33,17 @@ add_executable(turtlebot3_laser_scan src/turtlebot3.cpp)
 ament_target_dependencies(turtlebot3_laser_scan rclcpp sensor_msgs)
 add_executable(scanLocaliser src/scanComparisonMatch.cpp)
 ament_target_dependencies(scanLocaliser rclcpp sensor_msgs nav_msgs geometry_msgs OpenCV)
+add_executable(mapOverlay src/mapOverlay.cpp)
+ament_target_dependencies(mapOverlay rclcpp OpenCV)
 
 install(TARGETS
   turtlebot3_laser_scan
   scanLocaliser
-  DESTINATION lib/${PROJECT_NAME}
+  mapOverlay
+  DESTINATION lib/rs1_project
 )
 
-install(DIRECTORY launch worlds rviz
+install(DIRECTORY launch worlds rviz config maps
   DESTINATION share/rs1_project
 )
 

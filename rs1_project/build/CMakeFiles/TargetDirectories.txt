@@ -2,6 +2,7 @@
 /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/rs1_project_uninstall.dir
 /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/turtlebot3_laser_scan.dir
 /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/scanLocaliser.dir
+/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/mapOverlay.dir
 /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/test.dir
 /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/edit_cache.dir
 /home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build/CMakeFiles/rebuild_cache.dir

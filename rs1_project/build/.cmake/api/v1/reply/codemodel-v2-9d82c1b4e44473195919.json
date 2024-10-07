@@ -1,0 +1,97 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-e4f43bf43e1d6b68edb7.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "rs1_project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "mapOverlay::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-mapOverlay-Debug-6a0f6e6469e560b1b410.json",
+					"name" : "mapOverlay",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rs1_project_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rs1_project_uninstall-Debug-cd91b489591cc62b0a19.json",
+					"name" : "rs1_project_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "scanLocaliser::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-scanLocaliser-Debug-5b38f3ac9dce75d7341c.json",
+					"name" : "scanLocaliser",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "turtlebot3_laser_scan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-turtlebot3_laser_scan-Debug-fbf5e44bf1e2d128f151.json",
+					"name" : "turtlebot3_laser_scan",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-Debug-539bd3c7c428f48c14e1.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/student/ros2_ws/src/RoboticsStudio1/rs1_project/build",
+		"source" : "/home/student/ros2_ws/src/RoboticsStudio1/rs1_project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
